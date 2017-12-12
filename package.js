@@ -23,7 +23,7 @@ const shouldBuildAll = argv.all || false;
 
 const DEFAULT_OPTS = {
   dir: './',
-  name: 'Appium',
+  name: 'SourceViewer',
   asar: shouldUseAsar,
   ignore: [
     '^/test($|/)',

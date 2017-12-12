@@ -4,11 +4,11 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appium/appium-desktop.git"
+    "url": "git+https://github.com/KazuCocoa/appium-error-screen-source.git"
   },
   "author": {
     "name": "Kazuaki Matsuo",
-    "email": ""
+    "email": "fly.49.89.over@gmail.com"
   },
   "license": "APACHE2",
   "keywords": [
@@ -32,13 +32,11 @@
     "package-win": "npm run build && build --win --x64",
     "package-linux": "npm run build && build --linux",
     "package-all": "npm run build && build -mwl",
-    "package-e2e-test": "npm run build && build --dir",
-    "package-ci": "npm run integration && npm run build && npm run package-e2e-test && npm run e2e && build --publish onTagOrDraft",
     "postversion": "git pull --tags && git push && git push --tags"
   },
   "build": {
-    "productName": "Appium",
-    "appId": "io.appium.desktop",
+    "productName": "SourceViewer",
+    "appId": "com.kazucocoa.appium.error.screen.source",
     "asar": false,
     "directories": {
       "output": "release"
@@ -79,7 +77,7 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "appium",
+      "owner": "KazuCocoa",
       "vPrefixedTagName": true
     }
   },

@@ -8,6 +8,7 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import './styles/app.global.css';
 import './styles/github-gist-theme.global.css';
+import WrongFolder from './components/WrongFolder/WrongFolder';
 
 const {app} = electron.remote;
 const isDev = process.env.NODE_ENV === 'development';
