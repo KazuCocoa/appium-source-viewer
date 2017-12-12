@@ -6,3 +6,9 @@ Load image and source tree from local machine and show them.
 
 - `getScreenshotFile` in `app/renderer/components/Inspector/Screenshot.js`
 - `loadXml` in `/Users/kazuaki/GitHub/appium-desktop/app/renderer/actions/Inspector.js`
+
+# Create a package
+
+```
+$ npm run package-all
+```
