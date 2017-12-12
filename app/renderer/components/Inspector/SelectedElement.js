@@ -19,7 +19,7 @@ export default class SelectedElement extends Component {
 
   handleSendKeys () {
     const {sendKeys, applyClientMethod, hideSendKeysModal, selectedElementId:elementId} = this.props;
-    applyClientMethod({methodName: 'sendKeys', elementId, args: [sendKeys]});
+    applyClientMethod();
     hideSendKeysModal();
   }
 
@@ -91,9 +91,9 @@ export default class SelectedElement extends Component {
       <Row justify="center" type="flex" align="middle" gutter={10} className={styles.elementActions}>
         <Col>
           <ButtonGroup size="small">
-            <Button disabled={!elementId} icon={!elementInteractionsNotAvailable && !elementId && 'loading'} id='btnTapElement' onClick={() => applyClientMethod({methodName: 'click', elementId})}>Tap</Button>
+            <Button disabled={!elementId} icon={!elementInteractionsNotAvailable && !elementId && 'loading'} id='btnTapElement' onClick={() => applyClientMethod()}>Tap</Button>
             <Button disabled={!elementId} id='btnSendKeysToElement' onClick={() => showSendKeysModal()}>Send Keys</Button>
-            <Button disabled={!elementId} id='btnClearElement' onClick={() => applyClientMethod({methodName: 'clear', elementId})}>Clear</Button>
+            <Button disabled={!elementId} id='btnClearElement' onClick={() => applyClientMethod()}>Clear</Button>
           </ButtonGroup>
         </Col>
       </Row>

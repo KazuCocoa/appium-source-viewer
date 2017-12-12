@@ -6,7 +6,6 @@ import SelectedElement from './SelectedElement';
 import Source from './Source';
 import SourceScrollButtons from './SourceScrollButtons';
 import InspectorStyles from './Inspector.css';
-import RecordedActions from './RecordedActions';
 import { remote } from 'electron';
 
 const fs = require('fs');
@@ -36,7 +35,7 @@ export default class Inspector extends Component {
       window.resizeTo(newWidth, newHeight);
     }
     this.didInitialResize = true;
-    this.props.applyClientMethod({methodName: 'source'});
+    this.props.applyClientMethod();
   }
 
   screenshotInteractionChange (mode) {
@@ -123,9 +122,6 @@ export default class Inspector extends Component {
         {<Screenshot {...this.props} />}
       </div>
       <div id='sourceTreeContainer' className={InspectorStyles['source-tree-container']} ref={(div) => this.container = div} >
-        {showRecord &&
-          <RecordedActions {...this.props} />
-        }
         <Card
          title={<span><Icon type="file-text" /> App Source</span>}
          className={InspectorStyles['source-tree-card']}>

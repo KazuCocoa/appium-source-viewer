@@ -125,9 +125,6 @@ export default class Screenshot extends Component {
       }
     }
 
-    // const screenImg = <img src={`data:image/gif;base64,${screenshot}`} id="screenshot" />;
-    // const screenImg = <img src='file:///Users/kazuaki/GitHub/appium-desktop/sample/sample.png' id="screenshot" />;
-    console.log(this.getScreenshotFile());
     const screenImg = <img src={this.getScreenshotFile()} id="screenshot" />;
 
       // Show the screenshot and highlighter rects. Show loading indicator if a method call is in progress.

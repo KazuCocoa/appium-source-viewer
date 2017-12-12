@@ -10,7 +10,7 @@ if (ipcRenderer) {
   /**
    * When we hear back from the main process, resolve the promise
    */
-  ipcRenderer.on('appium-client-command-response', (evt, resp) => {
+  ipcRenderer.on('source-viewer-client-command-response', (evt, resp) => {
     // Rename 'id' to 'elementId'
     resp.elementId = resp.id;
     let promise = clientMethodPromises[resp.uuid];
@@ -23,7 +23,7 @@ if (ipcRenderer) {
   /**
    * If we hear back with an error, reject the promise
    */
-  ipcRenderer.on('appium-client-command-response-error', (evt, resp) => {
+  ipcRenderer.on('source-viewer-client-command-response-error', (evt, resp) => {
     const {e, uuid} = resp;
     let promise = clientMethodPromises[uuid];
     if (promise) {
@@ -39,7 +39,7 @@ export function callClientMethod (params) {
   }
   let uuid = UUID.v4();
   let promise = new Promise((resolve, reject) => clientMethodPromises[uuid] = {resolve, reject});
-  ipcRenderer.send('appium-client-command-request', {
+  ipcRenderer.send('source-viewer-client-command-request', {
     ...params,
     uuid,
   });

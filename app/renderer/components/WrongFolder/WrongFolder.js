@@ -6,7 +6,7 @@ import WrongFolderStyles from './WrongFolderStyles.css';
 export default class WrongFolder extends Component {
   // This tells the main thread to move this to applications folder which will cause the app to close and restart
   moveToApplicationsFolder () {
-    ipcRenderer.send('appium-move-to-applications-folder');
+    ipcRenderer.send('source-viewer-move-to-applications-folder');
   }
 
   render () {

@@ -42,20 +42,20 @@ export default class LocatedElements extends Component {
           <div>
             <Button size='small' 
               disabled={!locatorTestElement}
-              onClick={() => applyClientMethod({methodName: 'click', elementId: locatorTestElement})}>Tap Element
+              onClick={() => applyClientMethod()}>Tap Element
             </Button>
           </div>
           <div>
             <Button size='small'
               disabled={!locatorTestElement}
-              onClick={() => applyClientMethod({methodName: 'clear', elementId: locatorTestElement})}>Clear
+              onClick={() => applyClientMethod()}>Clear
             </Button>
           </div>
           <div className={InspectorStyles['send-keys-container']}>
             <Input size='small' placeholder='Enter keys' onChange={(e) => this.setState({...this.state, sendKeys: e.target.value})}/>
             <Button size='small'
               disabled={!locatorTestElement}
-              onClick={() => applyClientMethod({methodName: 'sendKeys', elementId: locatorTestElement, args: [this.state.sendKeys || '']})}>Send Keys</Button>
+              onClick={() => applyClientMethod()}>Send Keys</Button>
           </div>
         </div>}
       </Col>

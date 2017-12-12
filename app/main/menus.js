@@ -1,31 +1,17 @@
-import { app, shell } from 'electron';
-import autoUpdater from './auto-updater';
+import { app } from 'electron';
 
 let menuTemplates = {mac: {}, other: {}};
 
-function macMenuAppium (mainWindow) {
+function macMenuSourceViewer () {
   return {
-    label: 'Appium',
+    label: 'SourceViewer',
     submenu: [{
-      label: 'About Appium',
+      label: 'About SourceViewer',
       selector: 'orderFrontStandardAboutPanel:'
     }, {
-      label: 'Check for updates',
-      click () {
-        autoUpdater.openUpdaterWindow(mainWindow);
-        autoUpdater.checkForUpdates();
-      }
-    }, {
       type: 'separator'
     }, {
-      label: 'New Session Window...',
-      accelerator: 'Command+N',
-      click () {
-      }
-    }, {
-      type: 'separator'
-    }, {
-      label: 'Hide Appium',
+      label: 'Hide SourceViewer',
       accelerator: 'Command+H',
       selector: 'hide:'
     }, {
@@ -46,37 +32,6 @@ function macMenuAppium (mainWindow) {
     }]
   };
 }
-
-const macMenuEdit = {
-  label: 'Edit',
-  submenu: [{
-    label: 'Undo',
-    accelerator: 'Command+Z',
-    selector: 'undo:'
-  }, {
-    label: 'Redo',
-    accelerator: 'Shift+Command+Z',
-    selector: 'redo:'
-  }, {
-    type: 'separator'
-  }, {
-    label: 'Cut',
-    accelerator: 'Command+X',
-    selector: 'cut:'
-  }, {
-    label: 'Copy',
-    accelerator: 'Command+C',
-    selector: 'copy:'
-  }, {
-    label: 'Paste',
-    accelerator: 'Command+V',
-    selector: 'paste:'
-  }, {
-    label: 'Select All',
-    accelerator: 'Command+A',
-    selector: 'selectAll:'
-  }]
-};
 
 function macMenuView (mainWindow) {
   return {
@@ -127,70 +82,19 @@ const macMenuWindow = {
   }]
 };
 
-const macMenuHelp = {
-  label: 'Help',
-  submenu: [{
-    label: 'Learn More',
-    click () {
-      shell.openExternal('http://appium.io');
-    }
-  }, {
-    label: 'Documentation',
-    click () {
-      shell.openExternal('https://appium.io/documentation.html');
-    }
-  }, {
-    label: 'Search Issues',
-    click () {
-      shell.openExternal('https://github.com/appium/appium-desktop/issues');
-    }
-  }]
-};
-
 menuTemplates.mac = (mainWindow) => [
-  macMenuAppium(mainWindow),
-  macMenuEdit,
+  macMenuSourceViewer(),
   macMenuView(mainWindow),
-  macMenuWindow,
-  macMenuHelp
+  macMenuWindow
 ];
 
-function otherMenuFile (mainWindow) {
+function otherMenuFile () {
   let fileSubmenu = [{
     label: '&Open',
     accelerator: 'Ctrl+O'
   }, {
-    label: '&About Appium',
-    click () {
-      autoUpdater.openUpdaterWindow(mainWindow);
-      autoUpdater.checkForUpdates();
-    }
-  }, {
     type: 'separator'
-  }, {
-    label: '&New Session Window...',
-    accelerator: 'Ctrl+N',
-    click () {
-      createNewSessionWindow(mainWindow);
-    }
-  }, {
-    label: '&Close',
-    accelerator: 'Ctrl+W',
-    click () {
-      mainWindow.close();
-    }
   }];
-
-  // If it's Windows, add a 'Check for Updates' menu option
-  if (process.platform === 'win32') {
-    fileSubmenu.splice(1, 0, {
-      label: '&Check for updates',
-      click () {
-        autoUpdater.openUpdaterWindow(mainWindow);
-        autoUpdater.checkForUpdates();
-      }
-    });
-  }
 
   return {
     label: '&File',
@@ -229,30 +133,9 @@ function otherMenuView (mainWindow) {
   };
 }
 
-const otherMenuHelp = {
-  label: 'Help',
-  submenu: [{
-    label: 'Learn More',
-    click () {
-      shell.openExternal('http://appium.io');
-    }
-  }, {
-    label: 'Documentation',
-    click () {
-      shell.openExternal('https://appium.io/documentation.html');
-    }
-  }, {
-    label: 'Search Issues',
-    click () {
-      shell.openExternal('https://github.com/appium/appium-desktop/issues');
-    }
-  }]
-};
-
 menuTemplates.other = (mainWindow) => [
-  otherMenuFile(mainWindow),
-  otherMenuView(mainWindow),
-  otherMenuHelp
+  otherMenuFile(),
+  otherMenuView(mainWindow)
 ];
 
 export default menuTemplates;

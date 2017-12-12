@@ -40,10 +40,7 @@ export default class HighlighterRects extends Component {
     const {x, y} = this.state;
 
     if (screenshotInteractionMode === 'tap') {
-      applyClientMethod({
-        methodName: 'tap',
-        args: [x, y],
-      });
+      applyClientMethod();
     } else if (screenshotInteractionMode === 'swipe') {
       if (!swipeStart) {
         setSwipeStart(x, y);
@@ -82,10 +79,7 @@ export default class HighlighterRects extends Component {
 
   async handleDoSwipe () {
     const {swipeStart, swipeEnd, clearSwipeAction, applyClientMethod} = this.props;
-    await applyClientMethod({
-      methodName: 'swipe',
-      args: [swipeStart.x, swipeStart.y, swipeEnd.x - swipeStart.x, swipeEnd.y - swipeStart.y],
-    });
+    await applyClientMethod();
     clearSwipeAction();
   }
 

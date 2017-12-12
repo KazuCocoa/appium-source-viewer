@@ -170,23 +170,17 @@ function loadXml () {
 
 
 /**
- * Requests a method call on appium
+ * load source
  */
-export function applyClientMethod (params) {
+export function applyClientMethod () {
   return (dispatch) => {
     try {
-      // dispatch({type: METHOD_CALL_REQUESTED});
-      //
-      // dispatch({type: METHOD_CALL_DONE});
       dispatch({
         type: SET_SOURCE_AND_SCREENSHOT, 
         source: loadXml(),
         sourceXML: loadXml(),
       });
-    } catch (error) {
-      // let methodName = params.methodName === 'click' ? 'tap' : params.methodName;
-      // showError(error, methodName, 10);
-      // dispatch({type: METHOD_CALL_DONE});
+    } catch (_error) {
     }
   };
 }
@@ -230,7 +224,7 @@ export function setExpandedPaths (paths) {
 export function quitSession () {
   return async (dispatch) => {
     dispatch({type: QUIT_SESSION_REQUESTED});
-    await applyClientMethod({methodName: 'quit'})(dispatch);
+    await applyClientMethod()(dispatch);
     dispatch({type: QUIT_SESSION_DONE});
     dispatch(push('/session'));
   };
@@ -251,7 +245,7 @@ export function pauseRecording () {
 export function clearRecording () {
   return (dispatch) => {
     dispatch({type: CLEAR_RECORDING});
-    ipcRenderer.send('appium-restart-recorder'); // Tell the main thread to start the variable count from 1 
+    ipcRenderer.send('source-viewer-restart-recorder'); // Tell the main thread to start the variable count from 1
     dispatch({type: CLEAR_ASSIGNED_VAR_CACHE}); // Get rid of the variable cache
   };
 }
