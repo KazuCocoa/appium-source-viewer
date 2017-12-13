@@ -1,14 +1,28 @@
-# Experimental
+# appium-error-screen-source
 
-Load image and source tree from local machine and show them.
+Load image and Appium source tree from local machine and show them.
 
-![](docs/images/Screen-Shot-2017-12-04-at-1-15-07.png)
+![](docs/images/sample.jpg)
 
-- `getScreenshotFile` in `app/renderer/components/Inspector/Screenshot.js`
-- `loadXml` in `/Users/kazuaki/GitHub/appium-desktop/app/renderer/actions/Inspector.js`
+# How to use
+## Download binary
+1. Download binary from [release](https://github.com/KazuCocoa/appium-error-screen-source/releases) page
+2. Launch the binary
+3. Select the target png file and source file
+   - You can select `docs/sample/sample.png` and `docs/sample/source.xml` as an example.
+
+## Clone this repository
+1. Clone this repository
+2. `npm run dev` and select the target png file and source file
 
 # Create a package
 
 ```
 $ npm run package-all
 ```
+
+# License
+Apache 2.0
+
+Inspired by [Appium-Desktop](https://github.com/appium/appium-desktop)
+
