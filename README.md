@@ -10,12 +10,12 @@ Load image and Appium source tree from local machine and show them.
 2. Launch the binary
 3. Select the target png file and source file
    - You can select `docs/sample/sample.png` and `docs/sample/source.xml` as an example.
-4. **reload** ![](./docs/images/reload.jpg)
+4. Click **reload** <img src="./docs/images/reload.jpg" width=20>
 
 ## Clone this repository
 1. Clone this repository
 2. `npm run dev` and select the target png file and source file
-3. **reload** ![](./docs/images/reload.jpg)
+3. **reload** <img src="./docs/images/reload.jpg" width=20>
 
 # Create a package
 
