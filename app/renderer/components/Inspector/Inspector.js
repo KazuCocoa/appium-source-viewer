@@ -70,6 +70,11 @@ export default class Inspector extends Component {
     });
   }
 
+  setAndReloadScreenshot (path) {
+    this.setScreenshotFilePath(path);
+    location.reload();
+  }
+
   setScreenshotFilePath (path) {
     let container = document.getElementById('screenshot-path');
     container.value = path;
@@ -82,6 +87,11 @@ export default class Inspector extends Component {
       return fs.readFileSync('./tmp/screen_path.txt', 'utf-8');
     } catch (_error) {
     }
+  }
+
+  setAndReloadSource (path) {
+    this.setSourceFilePath(path);
+    location.reload();
   }
 
   setSourceFilePath (path) {
@@ -112,10 +122,10 @@ export default class Inspector extends Component {
     const {path} = selectedElement;
 
     const buttonScreen = <Icon type="file"
-                              onClick={() => this.getLocalFilePath((filepath) => this.setScreenshotFilePath(filepath[0]))} />;
+                              onClick={() => this.getLocalFilePath((filepath) => this.setAndReloadScreenshot(filepath[0]))} />;
 
     const buttonSource = <Icon type="file"
-                              onClick={() => this.getLocalFilePath((filepath) => this.setSourceFilePath(filepath[0]))} />;
+                              onClick={() => this.getLocalFilePath((filepath) => this.setAndReloadSource(filepath[0]))} />;
 
     let main = <div className={InspectorStyles['inspector-main']}>
       <div id='screenshotContainer' className={InspectorStyles['screenshot-container']}>
