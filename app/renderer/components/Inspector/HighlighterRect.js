@@ -9,8 +9,8 @@ import { parseCoordinates } from './shared';
 export default class HighlighterRect extends Component {
 
   render () {
-    const {selectedElement = {}, selectHoveredElement, unselectHoveredElement, hoveredElement = {}, selectElement, unselectElement, element, 
-      zIndex, scaleRatio, xOffset, elLocation, elSize} = this.props;
+    const {selectedElement = {}, selectHoveredElement, unselectHoveredElement, hoveredElement = {}, selectElement, unselectElement, element,
+           zIndex, scaleRatio, xOffset, elLocation, elSize} = this.props;
     const {path: hoveredPath} = hoveredElement;
     const {path: selectedPath} = selectedElement;
 

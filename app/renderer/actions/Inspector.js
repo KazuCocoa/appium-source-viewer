@@ -100,7 +100,7 @@ const findElement = _.debounce(async function (strategyMap, dispatch, getState, 
       selector,
     });
 
-    // Set the elementId, variableName and variableType for the selected element 
+    // Set the elementId, variableName and variableType for the selected element
     // (check first that the selectedElementPath didn't change, to avoid race conditions)
     if (elementId && getState().inspector.selectedElementPath === path) {
       return dispatch({type: SET_SELECTED_ELEMENT_ID, elementId, variableName, variableType});
@@ -176,7 +176,7 @@ export function applyClientMethod () {
   return (dispatch) => {
     try {
       dispatch({
-        type: SET_SOURCE_AND_SCREENSHOT, 
+        type: SET_SOURCE_AND_SCREENSHOT,
         source: loadXml(),
         sourceXML: loadXml(),
       });
@@ -352,7 +352,7 @@ export function setLocatorTestElement (elementId) {
     dispatch({type: CLEAR_SEARCHED_FOR_ELEMENT_BOUNDS});
     if (elementId) {
       try {
-        const [location, size] = await(B.all([
+        const [location, size] = await (B.all([
           callClientMethod({methodName: 'getLocation', args: [elementId], skipScreenshotAndSource: true, skipRecord: true}),
           callClientMethod({methodName: 'getSize', args: [elementId], skipScreenshotAndSource: true, skipRecord: true}),
         ]));

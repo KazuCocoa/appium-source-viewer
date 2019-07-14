@@ -10,7 +10,6 @@ import { remote } from 'electron';
 
 const fs = require('fs');
 const ButtonGroup = Button.Group;
-const FormItem = Form.Item;
 
 const MIN_WIDTH = 1080;
 const MIN_HEIGHT = 570;
